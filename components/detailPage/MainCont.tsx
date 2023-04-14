@@ -2,6 +2,7 @@ import React from 'react'
 import{ FC } from 'react';
 import User_icon from '../assets/svg/User_icon';
 import { Publication } from '../../lib/interfaces/publications.interface';
+import Image from 'next/image';
 
 interface IMainCont{
     publication : Publication[] | undefined
@@ -31,7 +32,7 @@ const MainCont: FC<IMainCont> = ({publication}) => {
         </button>
       </article>
 
-      <img src={publication? publication[0]?.images?.toString() :''} alt={publication? publication[0]?.title : ''} className='w-1/3 rounded-md' />
+      <Image src={publication? publication[0]?.images?.toString() :''} alt={publication? publication[0]?.title : ''} className='w-1/3 rounded-md' />
     </section>
     </div>
   )

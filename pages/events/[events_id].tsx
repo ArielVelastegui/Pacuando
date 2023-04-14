@@ -13,7 +13,7 @@ export const EventPage: NextPageWithLayout = () => {
 
   const { data: PublicationsResponse, } = usePublications();
 
-  let publications = PublicationsResponse?.results;
+  const publications = PublicationsResponse?.results;
 
   const p = publications?.filter((p) => {
     if (events_id == p.id) {

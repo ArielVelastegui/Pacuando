@@ -1,37 +1,42 @@
+import Image from 'next/image';
+import ProfileBanner from '../../components/ProfileBanner';
 import { Layout } from '../../components/layout/Layout';
 import { getTokenFromCookie } from '../../lib/helpers/axios.helper.';
 import { Results } from '../../lib/interfaces/user.interface';
-import { userMe, userPhoto } from '../../lib/services/user.services';
-import { NextPageWithLayout } from '../page';
+import { useUserMe, userPhoto } from '../../lib/services/user.services';
 import { useForm } from 'react-hook-form';
-import ProfileBanner from '../../components/ProfileBanner';
 import Link from 'next/link';
-import Image from 'next/image';
 
-const ProfilePage:NextPageWithLayout = () => {
+const { data, } = useUserMe()
 
-  const { data, } = userMe()
+const userData:Results = data?.results
+const user_id = userData?.profiles ? userData?.profiles[0].user_id : ''
+
+interface FormValues {
+  image_url:string
+}
+
+const { handleSubmit, register} = useForm<FormValues> ({
+  defaultValues:{
+    image_url:''
+  }
+})
+const onSubmit  = (data:FormValues)=>{
+
+  const d = data
+ // const onSubmit =  (data:any) => {
+    // setValue('firstName',data.firstName.trim())
+       
+      userPhoto( user_id , d)
+        
+   };
   
-  const userData:Results = data?.results
-  
+
+
+const ProfilePage = () => {
+
   if (getTokenFromCookie()) {
   
-    const { handleSubmit, register} = useForm({
-      defaultValues:{
-        image_url:''
-      }
-    })
-  
-    const user_id = userData?.profiles[0].user_id
-    const onSubmit  = (data:string)=>{
-  
-     // const onSubmit =  (data:any) => {
-        // setValue('firstName',data.firstName.trim())
-           
-          userPhoto( user_id , data)
-            
-       };
-    }
 
     return <div className='p-0'>
     <ProfileBanner />
@@ -129,10 +134,10 @@ const ProfilePage:NextPageWithLayout = () => {
     <Link href='/login'>    
       <p>Log in to see your profile</p>
     </Link>)
-  }
+  }}
 
  
-};
+
 
 
 

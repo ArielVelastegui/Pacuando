@@ -1,8 +1,11 @@
 import useSWR from "swr";
 import axios from "../helpers/axios.helper.";
 
+interface FormValues {
+    image_url:string
+  }
 
-function userMe () {
+function useUserMe () {
 const { data, error, isLoading, mutate} = useSWR('auth/me')
 
 return{
@@ -12,8 +15,8 @@ return{
     mutate,
 }}
 
-function userPhoto (userID:string ,img:string){
+function userPhoto (userID:string ,img:FormValues){
     axios.post(`/${userID}/add-img`,img)
 }
 
-export { userMe,userPhoto }
+export { useUserMe,userPhoto }

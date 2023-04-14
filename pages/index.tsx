@@ -12,7 +12,7 @@ import { usePublications } from '../lib/services/publication.services';
 const Home: NextPageWithLayout = () => {
   const { data: PublicationsResponse,} = usePublications();
 
-  let publications = PublicationsResponse;
+  const publications = PublicationsResponse;
 
   return (
     <div>

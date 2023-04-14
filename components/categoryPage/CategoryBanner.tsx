@@ -2,7 +2,7 @@ import { FC } from 'react'
 import React from 'react'
 
 interface ICategoryBanner{
-    category:string
+    category:string | string[] | undefined
 }
 
 const CategoryBanner:FC<ICategoryBanner> = ({category}) =>
