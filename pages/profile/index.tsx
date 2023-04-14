@@ -1,19 +1,20 @@
-import { useForm } from 'react-hook-form';
 import { Layout } from '../../components/layout/Layout';
-import ProfileBanner from '../../components/ProfileBanner';
 import { getTokenFromCookie } from '../../lib/helpers/axios.helper.';
 import { Results } from '../../lib/interfaces/user.interface';
 import { userMe, userPhoto } from '../../lib/services/user.services';
 import { NextPageWithLayout } from '../page';
+import { useForm } from 'react-hook-form';
+import ProfileBanner from '../../components/ProfileBanner';
 import Link from 'next/link';
+import Image from 'next/image';
 
-const ProfilePage = () => {
+const ProfilePage:NextPageWithLayout = () => {
 
+  const { data, } = userMe()
+  
+  const userData:Results = data?.results
   
   if (getTokenFromCookie()) {
-    const { data, error, isLoading, mutate} = userMe()
-    
-    const userData:Results = data?.results
   
     const { handleSubmit, register} = useForm({
       defaultValues:{
@@ -22,9 +23,9 @@ const ProfilePage = () => {
     })
   
     const user_id = userData?.profiles[0].user_id
-    const onSubmit  = (img:any)=>{
+    const onSubmit  = (data:string)=>{
   
-      const onSubmit =  (data:any) => {
+     // const onSubmit =  (data:any) => {
         // setValue('firstName',data.firstName.trim())
            
           userPhoto( user_id , data)
@@ -41,10 +42,10 @@ const ProfilePage = () => {
       <span className='grid h-full'>
       {
         userData?.image_url?
-        <img src={userData.image_url} alt="foto" />
+        <Image src={userData.image_url} alt="foto" />
         :
         <div>        
-        <form className='w-full h-[9em] bg-app-grayLight rounded-xl flex items-center'>
+        <form onSubmit={handleSubmit(onSubmit)} className='w-full h-[9em] bg-app-grayLight rounded-xl flex items-center'>
         <svg className='flex ml-auto mr-auto' width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M16 9.14286H9.14286V16H6.85714V9.14286H0V6.85714H6.85714V0H9.14286V6.85714H16V9.14286Z" fill="#1B4DB1"/>
   </svg>

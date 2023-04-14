@@ -1,6 +1,7 @@
 import React from 'react'
 import Icon_White from '../../components/assets/svg/Icon_White'
 import Swal from 'sweetalert2'
+import Link from 'next/link'
 
 const second = () => {
   return (
@@ -17,13 +18,13 @@ const second = () => {
         A continuación puedes completar la info de la marca, artista o torneo que quieres cerca. 
         </p>
         </span>
-      <a className='text-white' href="/help">Ayuda</a>
+      <Link className='text-white' href="/help">Ayuda</Link>
       </aside>
 
       <main className='pt-10'>
-        <a className='app-subtitle-1 text-app-blue pl-10' href='/create-publication'>
+        <Link className='app-subtitle-1 text-app-blue pl-10' href='/create-publication'>
             Back
-        </a>
+        </Link>
         <section className='flex flex-col justify-center ml-[10vw] w-full'>
             <div className='flex w-[50vw] h-4 bg-app-blue mt-10 rounded-full shadow-md'>
                 

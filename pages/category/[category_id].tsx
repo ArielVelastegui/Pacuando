@@ -10,7 +10,7 @@ export const CategoryPage: NextPageWithLayout = () => {
   const router = useRouter();
   const { category_id } = router.query;
 
-  const { data, error, isLoading } = usePublications();
+  const { data,} = usePublications();
 
   return (
     <div>

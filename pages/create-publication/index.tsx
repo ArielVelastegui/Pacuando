@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Icon_White from '../../components/assets/svg/Icon_White';
 
 const index = () => {
@@ -15,12 +16,12 @@ const index = () => {
         A continuación puedes completar la info de la marca, artista o torneo que quieres cerca. 
         </p>
         </span>
-      <a className='text-white' href="/help">Ayuda</a>
+      <Link className='text-white' href="/help">Ayuda</Link>
       </aside>
         <main className='pt-10'>
-        <a className='app-subtitle-1 text-app-blue pl-10' href='/'>
+        <Link className='app-subtitle-1 text-app-blue pl-10' href='/'>
             Back
-        </a>
+        </Link>
         <section className='flex flex-col justify-center ml-[10vw] w-full'>
             <div className='flex w-[50vw] h-4 bg-app-grayLighter  mt-10 rounded-full shadow-md'>
                 <div className='bg-app-blue w-2/3 rounded-full'>
@@ -48,9 +49,9 @@ const index = () => {
                 <input className='w-full h-28 border-app-gray border-[1.5px] rounded-lg p-3 text-sm' type="text" placeholder='¿Por qué lo recomiendas?'/>
                 <input className='w-full h-9 border-app-gray border-[1.5px] rounded-lg p-3 text-sm my-5' type="text" placeholder='Link de referencia'/>
             </form>
-        <a href='/create-publication/second' className='flex justify-center mx-auto py-3 px-8 bg-app-blue rounded-full text-white app-texto-2'>
+        <Link href='/create-publication/second' className='flex justify-center mx-auto py-3 px-8 bg-app-blue rounded-full text-white app-texto-2'>
             Siguiente
-        </a>
+        </Link>
         </section>
         </main>
     </div>

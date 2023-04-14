@@ -11,7 +11,7 @@ export const EventPage: NextPageWithLayout = () => {
   const router = useRouter();
   const { events_id } = router.query;
 
-  const { data: PublicationsResponse, error, isLoading } = usePublications();
+  const { data: PublicationsResponse, } = usePublications();
 
   let publications = PublicationsResponse?.results;
 

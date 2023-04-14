@@ -12,7 +12,7 @@ return{
     mutate,
 }}
 
-function userPhoto (userID:string ,img:any){
+function userPhoto (userID:string ,img:string){
     axios.post(`/${userID}/add-img`,img)
 }
 

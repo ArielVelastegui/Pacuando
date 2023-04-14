@@ -4,11 +4,12 @@ import { createUser } from '../lib/services/auth.service';
 import Swal from 'sweetalert2';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import Link from 'next/link';
+import { User, } from '../lib/interfaces/user.interface';
 type FormValues = {
-    firstName: string;
-    lastName: string;
+    first_name: string;
+    last_name: string;
     email: string;
-    userName: string;
     password: string;
   };
 
@@ -18,7 +19,7 @@ const SignupCard = () => {
 
   const router = useRouter()
 
-    const { register, handleSubmit } = useForm({
+    const { register, handleSubmit } = useForm<FormValues>({
         defaultValues: {
           first_name: '',
           last_name: '',
@@ -27,11 +28,11 @@ const SignupCard = () => {
         },
       });
 
-      const onSubmit =  (data:any) => {
+      const onSubmit =  (data:User) => {
        // setValue('firstName',data.firstName.trim())
           
          createUser(data)
-           .then((resp) => {
+           .then(() => {
 
              router.push('/login')
             return(
@@ -155,12 +156,12 @@ const SignupCard = () => {
       <input type='submit' value='Crear cuenta' className="w-full bg-app-yellow rounded-md text-app-black app-texto-2 h-9"/>
       </form>
       </div>
-      <a
+      <Link
         className="text-xs font-light text-app-yellow flex justify-center py-2 hover:underline "
         href="/login"
       >
         O inicia sesión
-      </a>
+      </Link>
     </div>
   )
 }

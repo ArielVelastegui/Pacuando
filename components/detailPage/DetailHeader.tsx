@@ -2,7 +2,7 @@ import React from 'react'
 import { FC } from 'react';
 
 interface IDetailHeader{
-    categories:[any,any]
+    categories:[string,string]
 }
 
 const DetailHeader: FC<IDetailHeader> = ({categories}) => {

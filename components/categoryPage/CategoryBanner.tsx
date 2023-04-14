@@ -2,7 +2,7 @@ import { FC } from 'react'
 import React from 'react'
 
 interface ICategoryBanner{
-    category:any
+    category:string
 }
 
 const CategoryBanner:FC<ICategoryBanner> = ({category}) =>

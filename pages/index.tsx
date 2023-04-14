@@ -10,7 +10,7 @@ import SearchButton from '../components/assets/svg/SearchButton';
 import { usePublications } from '../lib/services/publication.services';
 
 const Home: NextPageWithLayout = () => {
-  const { data: PublicationsResponse, error, isLoading } = usePublications();
+  const { data: PublicationsResponse,} = usePublications();
 
   let publications = PublicationsResponse;
 

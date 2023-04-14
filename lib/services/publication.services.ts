@@ -1,6 +1,6 @@
 import axios from "../helpers/axios.helper.";
 import useSWR from 'swr';
-import { PublicationsResponse } from "../interfaces/publications.interface";
+import { Publication, PublicationsResponse } from "../interfaces/publications.interface";
 
 //get publications
 function usePublications(){
@@ -19,9 +19,9 @@ function usePublications(){
         .then(res=>res.data)
     )
 }*/
-
+/*
 //post publications
-function createPublication (data:any) {
+function createPublication (data:Publication) {
     return axios.post('/publications',data)
 }
 
@@ -34,10 +34,10 @@ function deletePublications (id:any) {
 function updatePublications (data:any,id:any) {
     return axios.patch('/publications',id,data) 
 }
-
+*/
 /*
 function getPublications (){
     return axios.get('/publications')
 }*/
 
-export { usePublications, createPublication, }
+export { usePublications,  }
