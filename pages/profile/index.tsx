@@ -20,22 +20,22 @@ const { handleSubmit, register} = useForm<FormValues> ({
 
 
 const ProfilePage = () => {
+  const { data, } = useUserMe()
+  
+  const onSubmit  = (data:FormValues)=>{
+    
+    const d = data
+    // const onSubmit =  (data:any) => {
+      // setValue('firstName',data.firstName.trim())
+      
+      userPhoto( user_id , d)
+      
+    };
+    const userData:Results = data?.results
+    const user_id = userData?.profiles ? userData?.profiles[0].user_id : ''
   
   if (getTokenFromCookie()) {
     
-    const { data, } = useUserMe()
-    
-    const onSubmit  = (data:FormValues)=>{
-      
-      const d = data
-      // const onSubmit =  (data:any) => {
-        // setValue('firstName',data.firstName.trim())
-        
-        userPhoto( user_id , d)
-        
-      };
-      const userData:Results = data?.results
-      const user_id = userData?.profiles ? userData?.profiles[0].user_id : ''
       
 
     return <div className='p-0'>
