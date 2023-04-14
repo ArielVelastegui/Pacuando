@@ -11,15 +11,15 @@ interface FormValues {
   image_url:string
 }
 
-const { handleSubmit, register} = useForm<FormValues> ({
-  defaultValues:{
-    image_url:''
-  }
-})
-
 
 
 const ProfilePage = () => {
+  
+  const { handleSubmit, register} = useForm<FormValues> ({
+    defaultValues:{
+      image_url:''
+    }
+  })
   const { data, } = useUserMe()
   
   const onSubmit  = (data:FormValues)=>{
