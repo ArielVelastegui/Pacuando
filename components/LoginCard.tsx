@@ -1,10 +1,10 @@
-import Cookie from 'js-cookie';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 import { loginUser } from '../lib/services/auth.service';
 import { LoginUser } from '../lib/interfaces/user.interface';
+import Cookie from 'js-cookie';
 import Link from 'next/link';
 
 type FormValues = {

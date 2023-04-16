@@ -2,14 +2,15 @@ import Link from "next/link";
 import Icon from "../../assets/svg/Icon";
 import { getTokenFromCookie } from "../../../lib/helpers/axios.helper.";
 import User_icon from "../../assets/svg/User_icon";
-import { userMe } from "../../../lib/services/user.services";
 import Heart_icon from "../../assets/svg/Heart_icon";
+import { useUserMe } from "../../../lib/services/user.services";
 
 const Header = () => {
 
+  const { data,} = useUserMe()
+  
   if (getTokenFromCookie()) {
     
-    const { data,} = userMe()
     
     const email = data?.results.email
     return(
